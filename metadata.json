@@ -1,0 +1,5 @@
+{
+  "name": "ডিজিটাল খাতা v1.0.0",
+  "description": "Version 1.0.0 of ডিজিটাল খাতা (a digital ledger application), built with React and Tailwind CSS. It helps manage customers, suppliers, and transactions with offline-first support and AI-powered financial summaries. Includes a customizable logo option.",
+  "requestFramePermissions": []
+}

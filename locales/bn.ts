@@ -1,0 +1,178 @@
+
+export const bn = {
+  // Common
+  tallyKhata: 'ডিজিটাল খাতা',
+  dashboard: 'ড্যাশবোর্ড',
+  customers: 'গ্রাহক',
+  suppliers: 'সরবরাহকারী',
+  customer: 'গ্রাহক',
+  supplier: 'সরবরাহকারী',
+  entries: 'এন্ট্রি',
+  allEntries: 'সমস্ত এন্ট্রি',
+  reports: 'রিপোর্ট',
+  version: 'সংস্করণ 1.0.0',
+  name: 'নাম',
+  phone: 'ফোন',
+  email: 'ইমেইল',
+  address: 'ঠিকানা',
+  notes: 'নোট',
+  actions: 'ক্রিয়াকলাপ',
+  date: 'তারিখ',
+  amount: 'পরিমাণ',
+  balance: 'ব্যালেন্স',
+  type: 'ধরন',
+  credit: 'জমা',
+  debit: 'বাকি',
+  cancel: 'বাতিল',
+  save: 'সংরক্ষণ',
+  edit: 'সম্পাদনা',
+  add: 'যোগ',
+  delete: 'মুছে ফেলুন',
+  search: 'অনুসন্ধান...',
+  searchByNameOrPhone: 'নাম বা ফোন দ্বারা অনুসন্ধান করুন...',
+  searchByContactName: 'যোগাযোগের নাম দিয়ে অনুসন্ধান করুন...',
+  noDataAvailable: 'কোনো ডেটা উপলব্ধ নেই',
+  unknownContact: 'অজানা পরিচিতি',
+  advance: 'অগ্রিম',
+
+  // Header
+  header: {
+    settings: 'সেটিংস',
+    logout: 'লগআউট',
+  },
+
+  // Dashboard
+  dashboardPage: {
+    customersOweYou: 'আমি পাব',
+    youOweSuppliers: 'আমি দিব',
+    totalCredit: 'মোট জমা',
+    totalDebit: 'মোট বাকি',
+    generateAISummary: 'AI সারাংশ তৈরি করুন',
+    addCredit: 'জমা যোগ করুন',
+    addDebit: 'বাকি যোগ করুন',
+    paymentReminders: 'পেমেন্ট রিমাইন্ডার',
+    dueOn: 'প্রদেয় তারিখ: {{date}}',
+    send: 'পাঠান',
+    recentTransactions: 'সাম্প্রতিক লেনদেন',
+    noRecentTransactions: 'কোনো সাম্প্রতিক লেনদেন নেই।',
+    aiFinancialSummary: 'AI আর্থিক সারাংশ',
+    mockReminderSent: 'মক রিমাইন্ডার পাঠানো হয়েছে!\n\nপ্রতি: {{name}}\nপরিমাণ: ${{amount}}',
+    mockPaymentNotificationSent: 'মক পেমেন্ট বিজ্ঞপ্তি পাঠানো হয়েছে!\n\nপ্রতি: {{name}}\nপরিমাণ: ${{amount}}',
+  },
+
+  // Customers & Suppliers Pages
+  contactsPage: {
+    addCustomer: 'গ্রাহক যোগ করুন',
+    addSupplier: 'সরবরাহকারী যোগ করুন',
+    deleteCustomerConfirmation: 'আপনি কি নিশ্চিত যে আপনি এই গ্রাহক এবং তাদের সমস্ত লেনদেন মুছে ফেলতে চান?',
+    deleteSupplierConfirmation: 'আপনি কি নিশ্চিত যে আপনি এই সরবরাহকারী এবং তাদের সমস্ত লেনদেন মুছে ফেলতে চান?',
+    noCustomersFound: 'কোনো গ্রাহক পাওয়া যায়নি।',
+    noSuppliersFound: 'কোনো সরবরাহকারী পাওয়া যায়নি।',
+  },
+
+  // Transactions Page
+  transactionsPage: {
+    transactionsFor: '{{name}} এর জন্য লেনদেন',
+    clearFilter: '(ফিল্টার সাফ করুন)',
+    allTransactions: 'সমস্ত লেনদেন',
+    generateInvoice: 'ইনভয়েস তৈরি করুন ({{count}})',
+    invoiceCheckboxDisabledTooltip: 'শুধুমাত্র জমা লেনদেন একটি ইনভয়েসে যোগ করা যেতে পারে',
+    noTransactionsFound: 'কোনো লেনদেন পাওয়া যায়নি।',
+    deleteTransactionConfirmation: 'আপনি কি নিশ্চিত যে আপনি এই লেনদেনটি মুছে ফেলতে চান? এটি পরিচিতির ব্যালেন্স আপডেট করবে।',
+    filterByType: 'ধরণ অনুযায়ী ফিল্টার',
+    allTypes: 'সব ধরণ',
+    startDate: 'শুরুর তারিখ',
+    endDate: 'শেষ তারিখ',
+    resetFilters: 'রিসেট',
+    filterByDate: 'তারিখ অনুযায়ী ফিল্টার',
+    today: 'আজ',
+    thisWeek: 'এই সপ্তাহ',
+    thisMonth: 'এই মাস',
+  },
+
+  // Reports Page
+  reportsPage: {
+    incomeVsExpense: 'আয় বনাম ব্যয়',
+    daily: 'দৈনিক',
+    weekly: 'সাপ্তাহিক',
+    monthly: 'মাসিক',
+    noDataForTimeframe: 'নির্বাচিত সময়সীমার জন্য কোনো ডেটা উপলব্ধ নেই।',
+    creditIncome: 'জমা (আয়)',
+    debitExpense: 'বাকি (ব্যয়)',
+  },
+
+  // Login Page
+  loginPage: {
+    createAccount: 'অ্যাকাউন্ট তৈরি করুন',
+    welcome: 'ডিজিটাল খাতা',
+    joinUs: 'আমাদের সাথে যোগ দিন এবং আপনার অর্থ পরিচালনা করুন',
+    signInToLedger: 'আপনার ডিজিটাল খাতায় সাইন ইন করুন',
+    mobileNumber: 'মোবাইল নম্বর',
+    fullName: 'পুরো নাম',
+    emailAddress: 'ইমেল ঠিকানা',
+    password: 'পাসওয়ার্ড',
+    confirmPassword: 'পাসওয়ার্ড নিশ্চিত করুন',
+    forgotPassword: 'পাসওয়ার্ড ভুলে গেছেন?',
+    signUp: 'সাইন আপ',
+    signIn: 'সাইন ইন',
+    sendOtp: 'OTP পাঠান',
+    enterOtp: 'OTP প্রবেশ করান',
+    signUpWithOtp: 'OTP দিয়ে সাইন আপ করুন',
+    signInWithOtp: 'OTP দিয়ে সাইন ইন করুন',
+    alreadyHaveAccount: 'ইতিমধ্যে একটি অ্যাকাউন্ট আছে?',
+    dontHaveAccount: 'একটি অ্যাকাউন্ট নেই?',
+    alertFieldsPasswordMismatch: 'অনুগ্রহ করে সমস্ত ক্ষেত্র পূরণ করুন এবং নিশ্চিত করুন যে পাসওয়ার্ড মিলেছে।',
+    alertNameOtp: 'অনুগ্রহ করে আপনার নাম এবং OTP প্রদান করুন।',
+    alertOtpSent: '{{mobileNumber}} নম্বরে একটি মক OTP পাঠানো হয়েছে',
+    alertInvalidMobile: 'অনুগ্রহ করে একটি বৈধ মোবাইল নম্বর লিখুন।',
+  },
+  
+  // Contact Form Modal
+  contactForm: {
+    editCustomer: 'গ্রাহক সম্পাদনা',
+    addCustomer: 'গ্রাহক যোগ',
+    editSupplier: 'সরবরাহকারী সম্পাদনা',
+    addSupplier: 'সরবরাহকারী যোগ',
+    emailOptional: 'ইমেইল (ঐচ্ছিক)',
+    addressOptional: 'ঠিকানা (ঐচ্ছিক)',
+    setPaymentReminder: 'পেমেন্ট রিমাইন্ডার সেট করুন',
+    saveCustomer: 'গ্রাহক সংরক্ষণ',
+    saveSupplier: 'সরবরাহকারী সংরক্ষণ',
+    alertNameAndPhoneRequired: 'নাম এবং ফোন আবশ্যক।',
+  },
+
+  // Transaction Form Modal
+  transactionForm: {
+    addCreditTitle: 'জমা যোগ করুন (আমি পেয়েছি)',
+    addDebitTitle: 'বাকি যোগ করুন (আমি দিয়েছি)',
+    contact: 'যোগাযোগ',
+    selectAContact: 'একটি যোগাযোগ নির্বাচন করুন',
+    notesOptional: 'নোট (ঐচ্ছিক)',
+    saveTransaction: 'লেনদেন সংরক্ষণ করুন',
+    alertContactAndAmountRequired: 'অনুগ্রহ করে একটি যোগাযোগ নির্বাচন করুন এবং একটি বৈধ পরিমাণ লিখুন।',
+  },
+
+  // Settings Modal
+  settingsModal: {
+    title: 'সেটিংস',
+    companyLogo: 'কোম্পানির লোগো',
+    noLogo: 'কোনো লোগো নেই',
+    chooseLogo: 'লোগো নির্বাচন করুন',
+    removeLogo: 'লোগো সরান',
+    saveChanges: 'পরিবর্তন সংরক্ষণ করুন',
+  },
+
+  // Invoice Modal
+  invoiceModal: {
+    title: 'ইনভয়েস #{{invoiceNumber}}',
+    yourCompany: 'আপনার কোম্পানি',
+    invoiceNumber: 'ইনভয়েস #:',
+    billTo: 'বিল প্রতি',
+    description: 'বিবরণ',
+    total: 'মোট',
+    thankYou: 'আপনার ব্যবসার জন্য ধন্যবাদ!',
+    close: 'বন্ধ',
+    printInvoice: 'ইনভয়েস মুদ্রণ করুন',
+    notApplicable: 'প্রযোজ্য নয়',
+  },
+};
