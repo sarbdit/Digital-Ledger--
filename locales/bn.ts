@@ -1,4 +1,3 @@
-
 export const bn = {
   // Common
   tallyKhata: 'ডিজিটাল খাতা',
@@ -45,8 +44,8 @@ export const bn = {
   dashboardPage: {
     customersOweYou: 'আমি পাব',
     youOweSuppliers: 'আমি দিব',
-    totalCredit: 'মোট জমা',
-    totalDebit: 'মোট বাকি',
+    totalCredit: 'মোট বাকি',
+    totalDebit: 'মোট আদায়',
     generateAISummary: 'AI সারাংশ তৈরি করুন',
     addCredit: 'জমা যোগ করুন',
     addDebit: 'বাকি যোগ করুন',
@@ -92,13 +91,13 @@ export const bn = {
 
   // Reports Page
   reportsPage: {
-    incomeVsExpense: 'আয় বনাম ব্যয়',
+    incomeVsExpense: 'বাকি বনাম আদায়',
     daily: 'দৈনিক',
     weekly: 'সাপ্তাহিক',
     monthly: 'মাসিক',
     noDataForTimeframe: 'নির্বাচিত সময়সীমার জন্য কোনো ডেটা উপলব্ধ নেই।',
-    creditIncome: 'জমা (আয়)',
-    debitExpense: 'বাকি (ব্যয়)',
+    creditIncome: 'বাকি',
+    debitExpense: 'আদায়',
   },
 
   // Login Page
