@@ -24,6 +24,10 @@ const Suppliers: React.FC = () => {
         c.phone.includes(searchTerm)
     );
   }, [suppliers, searchTerm]);
+  
+  const totalBalance = useMemo(() => {
+    return suppliers.reduce((sum, c) => sum + c.balance, 0);
+  }, [suppliers]);
 
   const handleAdd = () => {
     setEditingContact(null);
@@ -80,6 +84,7 @@ const Suppliers: React.FC = () => {
         onEdit={handleEdit}
         onDelete={handleDelete}
         contactType="supplier"
+        totalBalance={totalBalance}
       />
 
       {isModalOpen && (

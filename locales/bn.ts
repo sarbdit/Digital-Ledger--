@@ -26,10 +26,11 @@ export const bn = {
   save: 'সংরক্ষণ',
   edit: 'সম্পাদনা',
   add: 'যোগ',
+  addNew: 'নতুন যোগ',
   delete: 'মুছে ফেলুন',
   search: 'অনুসন্ধান...',
   searchByNameOrPhone: 'নাম বা ফোন দ্বারা অনুসন্ধান করুন...',
-  searchByContactName: 'যোগাযোগের নাম দিয়ে অনুসন্ধান করুন...',
+  searchByNameOrNotes: 'যোগাযোগের নাম বা নোট দিয়ে অনুসন্ধান...',
   noDataAvailable: 'কোনো ডেটা উপলব্ধ নেই',
   unknownContact: 'অজানা পরিচিতি',
   advance: 'অগ্রিম',
@@ -67,6 +68,8 @@ export const bn = {
     deleteSupplierConfirmation: 'আপনি কি নিশ্চিত যে আপনি এই সরবরাহকারী এবং তাদের সমস্ত লেনদেন মুছে ফেলতে চান?',
     noCustomersFound: 'কোনো গ্রাহক পাওয়া যায়নি।',
     noSuppliersFound: 'কোনো সরবরাহকারী পাওয়া যায়নি।',
+    totalOwedByCustomers: 'মোট বাকি',
+    totalOwedToSuppliers: 'মোট পরিশোধযোগ্য',
   },
 
   // Transactions Page
@@ -87,6 +90,7 @@ export const bn = {
     today: 'আজ',
     thisWeek: 'এই সপ্তাহ',
     thisMonth: 'এই মাস',
+    runningBalance: 'চলমান ব্যালেন্স',
   },
 
   // Reports Page
@@ -174,5 +178,8 @@ export const bn = {
     close: 'বন্ধ',
     printInvoice: 'ইনভয়েস মুদ্রণ করুন',
     notApplicable: 'প্রযোজ্য নয়',
+    shareOnWhatsApp: 'WhatsApp এ শেয়ার করুন',
+    summary: 'সারাংশ',
+    creditTransaction: 'জমা লেনদেন',
   },
 };

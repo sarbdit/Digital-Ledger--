@@ -95,14 +95,37 @@ const Transactions: React.FC = () => {
     setEndDate(formatDate(end));
   };
 
+  const runningBalanceMap = useMemo(() => {
+    if (!filteredContactId) return new Map<string, number>();
+
+    const contact = getContactById(filteredContactId);
+    if (!contact) return new Map<string, number>();
+
+    const allContactTransactions = state.transactions
+        .filter(t => t.contactId === filteredContactId)
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    
+    const balanceMap = new Map<string, number>();
+    let currentBalance = contact.balance;
+
+    for (const t of allContactTransactions) {
+        balanceMap.set(t.id, currentBalance);
+        // To get the balance *before* this transaction, we reverse its effect
+        const effect = t.type === TransactionType.DEBIT ? t.amount : -t.amount;
+        currentBalance -= effect;
+    }
+    return balanceMap;
+  }, [state.transactions, filteredContactId, getContactById]);
 
   const filteredTransactions = useMemo(() => {
     return state.transactions
-      .map(transaction => ({ ...transaction, contactName: getContactById(transaction.contactId)?.name || t('unknownContact') }))
       .filter(t => {
-          const matchesSearch = t.contactName.toLowerCase().includes(searchTerm.toLowerCase());
+          const contactName = getContactById(t.contactId)?.name.toLowerCase() || '';
+          const notes = t.notes?.toLowerCase() || '';
+          const search = searchTerm.toLowerCase();
+          const matchesSearch = contactName.includes(search) || notes.includes(search);
+
           const matchesContactFilter = filteredContactId ? t.contactId === filteredContactId : true;
-          
           const matchesType = filterType === 'all' ? true : t.type === filterType;
               
           const transactionDate = t.date.substring(0, 10);
@@ -111,7 +134,11 @@ const Transactions: React.FC = () => {
 
           return matchesSearch && matchesContactFilter && matchesType && matchesStartDate && matchesEndDate;
       })
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .map(transaction => ({ 
+        ...transaction, 
+        contactName: getContactById(transaction.contactId)?.name || t('unknownContact') 
+      }));
   }, [state.transactions, searchTerm, getContactById, filteredContactId, t, filterType, startDate, endDate]);
   
   const filteredContactName = useMemo(() => {
@@ -189,11 +216,11 @@ const Transactions: React.FC = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 p-4 border rounded-lg dark:border-gray-700 bg-gray-50 dark:bg-gray-700/20">
         <div className="md:col-span-1">
-            <label htmlFor="search" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('searchByContactName')}</label>
+            <label htmlFor="search" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('searchByNameOrNotes')}</label>
             <input
                 id="search"
                 type="text"
-                placeholder={t('searchByContactName')}
+                placeholder={t('searchByNameOrNotes')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -258,6 +285,7 @@ const Transactions: React.FC = () => {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">{t('type')}</th>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">{t('amount')}</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">{t('notes')}</th>
+              {filteredContactId && <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">{t('transactionsPage.runningBalance')}</th>}
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">{t('actions')}</th>
             </tr>
           </thead>
@@ -288,9 +316,14 @@ const Transactions: React.FC = () => {
                 <td className={`px-6 py-4 whitespace-nowrap text-sm text-right font-medium ${
                   t.type === TransactionType.CREDIT ? 'text-green-600' : 'text-red-600'
                 }`}>
-                  ৳{t.amount.toFixed(2)}
+                  {t.type === TransactionType.CREDIT ? '-' : '+'} ৳{t.amount.toFixed(2)}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400 max-w-xs truncate">{t.notes}</td>
+                {filteredContactId && (
+                    <td className={`px-6 py-4 whitespace-nowrap text-right text-sm font-semibold ${runningBalanceMap.get(t.id)! >= 0 ? 'text-gray-700 dark:text-gray-300' : 'text-red-500'}`}>
+                        ৳{runningBalanceMap.get(t.id)!.toFixed(2)}
+                    </td>
+                )}
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <button onClick={() => handleDelete(t)} className="text-red-600 hover:text-red-900">
                     <i className="fas fa-trash"></i>

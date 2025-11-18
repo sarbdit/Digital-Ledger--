@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from './Modal';
-import { Transaction, Contact } from '../../types';
+import { Transaction, Contact, TransactionType } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { appLogo } from '../../assets/logo';
 
@@ -15,6 +15,10 @@ interface InvoiceModalProps {
 const InvoiceModal: React.FC<InvoiceModalProps> = ({ isOpen, onClose, transactions, contact, logo }) => {
   const { t } = useLanguage();
   if (!isOpen || !contact) return null;
+
+  const invoiceNumber = `INV-${new Date().getTime().toString().slice(-6)}`;
+  const invoiceDate = new Date().toLocaleDateString();
+  const totalAmount = transactions.reduce((sum, t) => sum + t.amount, 0);
 
   const handlePrint = () => {
     const content = document.getElementById('invoice-content');
@@ -39,9 +43,25 @@ const InvoiceModal: React.FC<InvoiceModalProps> = ({ isOpen, onClose, transactio
     }
   };
 
-  const invoiceNumber = `INV-${new Date().getTime().toString().slice(-6)}`;
-  const invoiceDate = new Date().toLocaleDateString();
-  const totalAmount = transactions.reduce((sum, t) => sum + t.amount, 0);
+  const handleWhatsAppShare = () => {
+    let message = `*${t('invoiceModal.invoiceTitle')}*\n\n`;
+    message += `${t('invoiceModal.invoiceNumber')} ${invoiceNumber}\n`;
+    message += `${t('date')}: ${invoiceDate}\n\n`;
+    message += `*${t('invoiceModal.billTo')}*\n`;
+    message += `${contact.name}\n\n`;
+    
+    message += `*${t('invoiceModal.summary')}*\n`;
+    transactions.forEach(t => {
+      const notes = t.notes || t('invoiceModal.creditTransaction');
+      message += `- ${notes}: ৳${t.amount.toFixed(2)}\n`;
+    });
+    
+    message += `\n*${t('invoiceModal.total')}: ৳${totalAmount.toFixed(2)}*\n\n`;
+    message += `_${t('invoiceModal.thankYou')}_`;
+    
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={t('invoiceModal.title', { invoiceNumber })}>
@@ -103,6 +123,9 @@ const InvoiceModal: React.FC<InvoiceModalProps> = ({ isOpen, onClose, transactio
         <div className="p-4 bg-gray-50 dark:bg-gray-900 flex justify-end gap-2 border-t dark:border-gray-700">
             <button type="button" onClick={onClose} className="bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-lg hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
                 {t('invoiceModal.close')}
+            </button>
+            <button onClick={handleWhatsAppShare} className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg flex items-center gap-2">
+                <i className="fab fa-whatsapp"></i> {t('invoiceModal.shareOnWhatsApp')}
             </button>
             <button onClick={handlePrint} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg flex items-center gap-2">
                 <i className="fas fa-print"></i> {t('invoiceModal.printInvoice')}

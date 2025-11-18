@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Contact } from '../../types';
@@ -9,9 +8,10 @@ interface ContactListProps {
   onEdit: (contact: Contact) => void;
   onDelete: (id: string) => void;
   contactType: 'customer' | 'supplier';
+  totalBalance: number;
 }
 
-const ContactList: React.FC<ContactListProps> = ({ contacts, onEdit, onDelete, contactType }) => {
+const ContactList: React.FC<ContactListProps> = ({ contacts, onEdit, onDelete, contactType, totalBalance }) => {
   const navigate = useNavigate();
   const { t } = useLanguage();
 
@@ -71,6 +71,17 @@ const ContactList: React.FC<ContactListProps> = ({ contacts, onEdit, onDelete, c
               </tr>
             ))}
           </tbody>
+          <tfoot className="bg-gray-100 dark:bg-gray-700">
+            <tr>
+                <td colSpan={2} className="px-6 py-3 text-right text-sm font-bold text-gray-700 dark:text-gray-200 uppercase">
+                    {contactType === 'customer' ? t('contactsPage.totalOwedByCustomers') : t('contactsPage.totalOwedToSuppliers')}
+                </td>
+                <td className={`px-6 py-3 text-right text-sm font-bold ${totalBalance > 0 ? 'text-green-700 dark:text-green-400' : totalBalance < 0 ? 'text-red-700 dark:text-red-400' : 'text-gray-700 dark:text-gray-200'}`}>
+                    ৳{Math.abs(totalBalance).toFixed(2)}
+                </td>
+                <td className="px-6 py-3"></td>
+            </tr>
+          </tfoot>
         </table>
         {contacts.length === 0 && (
             <p className="text-center text-gray-500 dark:text-gray-400 py-8">{t(`contactsPage.no${contactType === 'customer' ? 'Customers' : 'Suppliers'}Found`)}</p>

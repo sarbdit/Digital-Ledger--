@@ -25,6 +25,10 @@ const Customers: React.FC = () => {
     );
   }, [customers, searchTerm]);
 
+  const totalBalance = useMemo(() => {
+    return customers.reduce((sum, c) => sum + c.balance, 0);
+  }, [customers]);
+
   const handleAdd = () => {
     setEditingContact(null);
     setIsModalOpen(true);
@@ -80,6 +84,7 @@ const Customers: React.FC = () => {
         onEdit={handleEdit}
         onDelete={handleDelete}
         contactType="customer"
+        totalBalance={totalBalance}
       />
 
       {isModalOpen && (

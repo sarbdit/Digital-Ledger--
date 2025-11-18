@@ -26,10 +26,11 @@ export const en = {
   save: 'Save',
   edit: 'Edit',
   add: 'Add',
+  addNew: 'Add New',
   delete: 'Delete',
   search: 'Search...',
   searchByNameOrPhone: 'Search by name or phone...',
-  searchByContactName: 'Search by contact name...',
+  searchByNameOrNotes: 'Search by contact name or notes...',
   noDataAvailable: 'No data available',
   unknownContact: 'Unknown Contact',
   advance: 'Advance',
@@ -67,6 +68,8 @@ export const en = {
     deleteSupplierConfirmation: 'Are you sure you want to delete this supplier and all their transactions?',
     noCustomersFound: 'No customers found.',
     noSuppliersFound: 'No suppliers found.',
+    totalOwedByCustomers: 'Total Owed',
+    totalOwedToSuppliers: 'Total Due',
   },
 
   // Transactions Page
@@ -87,6 +90,7 @@ export const en = {
     today: 'Today',
     thisWeek: 'This Week',
     thisMonth: 'This Month',
+    runningBalance: 'Running Balance',
   },
 
   // Reports Page
@@ -173,6 +177,9 @@ export const en = {
     thankYou: 'Thank you for your business!',
     close: 'Close',
     printInvoice: 'Print Invoice',
-    notApplicable: 'N/A'
+    notApplicable: 'N/A',
+    shareOnWhatsApp: 'Share on WhatsApp',
+    summary: 'Summary',
+    creditTransaction: 'Credit Transaction',
   },
 };
