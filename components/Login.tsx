@@ -1,6 +1,6 @@
-
 import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { appLogo } from '../assets/logo';
 
 interface LoginProps {
   onLogin: () => void;
@@ -66,6 +66,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center p-4">
       <div className="w-full max-w-md p-8 space-y-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
         <div className="text-center">
+          <img src={appLogo} alt="Digital Khata Logo" className="w-24 h-24 mx-auto mb-4" />
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white">{isSignUp ? t('loginPage.createAccount') : t('loginPage.welcome')}</h1>
           <p className="mt-2 text-gray-600 dark:text-gray-400">{isSignUp ? t('loginPage.joinUs') : t('loginPage.signInToLedger')}</p>
         </div>

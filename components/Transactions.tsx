@@ -270,7 +270,7 @@ const Transactions: React.FC = () => {
                         checked={selectedTransactionIds.includes(t.id)}
                         onChange={() => handleSelectTransaction(t.id, t.contactId)}
                         disabled={(invoiceContactId !== null && t.contactId !== invoiceContactId) || t.type === TransactionType.DEBIT}
-                        title={t.type === TransactionType.DEBIT ? "Only CREDIT transactions can be added to an invoice" : ""}
+                        title={t.type === TransactionType.DEBIT ? t('transactionsPage.invoiceCheckboxDisabledTooltip') : ""}
                         className="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                 </td>
@@ -288,7 +288,7 @@ const Transactions: React.FC = () => {
                 <td className={`px-6 py-4 whitespace-nowrap text-sm text-right font-medium ${
                   t.type === TransactionType.CREDIT ? 'text-green-600' : 'text-red-600'
                 }`}>
-                  ${t.amount.toFixed(2)}
+                  ৳{t.amount.toFixed(2)}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400 max-w-xs truncate">{t.notes}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

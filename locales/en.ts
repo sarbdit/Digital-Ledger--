@@ -1,4 +1,3 @@
-
 export const en = {
   // Common
   tallyKhata: 'ডিজিটাল খাতা',
@@ -56,8 +55,8 @@ export const en = {
     recentTransactions: 'Recent Transactions',
     noRecentTransactions: 'No recent transactions.',
     aiFinancialSummary: 'AI Financial Summary',
-    mockReminderSent: 'Mock Reminder Sent!\n\nTo: {{name}}\nFor Amount: ${{amount}}',
-    mockPaymentNotificationSent: 'Mock Payment Notification Sent!\n\nTo: {{name}}\nFor Amount: ${{amount}}',
+    mockReminderSent: 'Mock Reminder Sent!\n\nTo: {{name}}\nFor Amount: ৳{{amount}}',
+    mockPaymentNotificationSent: 'Mock Payment Notification Sent!\n\nTo: {{name}}\nFor Amount: ৳{{amount}}',
   },
 
   // Customers & Suppliers Pages
@@ -165,6 +164,7 @@ export const en = {
   // Invoice Modal
   invoiceModal: {
     title: 'Invoice #{{invoiceNumber}}',
+    invoiceTitle: 'INVOICE',
     yourCompany: 'Your Company',
     invoiceNumber: 'Invoice #:',
     billTo: 'Bill To',

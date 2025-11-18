@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { appLogo } from '../../assets/logo';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -34,7 +34,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
       >
         <div>
             <div className="flex items-center justify-center p-4 border-b dark:border-gray-700">
-                <i className="fa-solid fa-book-open text-3xl text-blue-600"></i>
+                <img src={appLogo} alt="Logo" className="h-10 w-10" />
                 <h1 className="text-2xl font-bold ml-2 text-gray-800 dark:text-gray-200">{t('tallyKhata')}</h1>
             </div>
             <nav className="mt-5">

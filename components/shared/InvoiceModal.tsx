@@ -1,8 +1,8 @@
-
 import React from 'react';
 import Modal from './Modal';
 import { Transaction, Contact } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { appLogo } from '../../assets/logo';
 
 interface InvoiceModalProps {
   isOpen: boolean;
@@ -49,12 +49,12 @@ const InvoiceModal: React.FC<InvoiceModalProps> = ({ isOpen, onClose, transactio
             {/* Header */}
             <div className="flex justify-between items-start mb-8">
                 <div>
-                    {logo ? <img src={logo} alt="Company Logo" className="h-12 max-w-[150px] object-contain mb-2" /> : <h1 className="text-2xl font-bold">{t('invoiceModal.yourCompany')}</h1>}
+                    {logo ? <img src={logo} alt="Company Logo" className="h-12 max-w-[150px] object-contain mb-2" /> : <img src={appLogo} alt="Digital Khata Logo" className="h-12 object-contain mb-2" />}
                     <p className="text-xs text-gray-600">123 Business Rd.</p>
                     <p className="text-xs text-gray-600">City, State, 12345</p>
                 </div>
                 <div className="text-right">
-                    <h2 className="text-3xl font-bold uppercase text-gray-800">{t('dashboardPage.generateAISummary').split(' ')[1]}</h2>
+                    <h2 className="text-3xl font-bold uppercase text-gray-800">{t('invoiceModal.invoiceTitle')}</h2>
                     <p className="text-sm text-gray-600 mt-1">{t('invoiceModal.invoiceNumber')} {invoiceNumber}</p>
                     <p className="text-sm text-gray-600">{t('date')}: {invoiceDate}</p>
                 </div>
@@ -80,8 +80,8 @@ const InvoiceModal: React.FC<InvoiceModalProps> = ({ isOpen, onClose, transactio
                     {transactions.map(t => (
                         <tr key={t.id} className="border-b border-gray-200">
                             <td className="p-2">{new Date(t.date).toLocaleDateString()}</td>
-                            <td className="p-2">{t.notes || 'N/A'}</td>
-                            <td className="text-right p-2">${t.amount.toFixed(2)}</td>
+                            <td className="p-2">{t.notes || t('invoiceModal.notApplicable')}</td>
+                            <td className="text-right p-2">৳{t.amount.toFixed(2)}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -91,7 +91,7 @@ const InvoiceModal: React.FC<InvoiceModalProps> = ({ isOpen, onClose, transactio
                 <div className="w-full max-w-xs">
                     <div className="flex justify-between font-bold text-xl bg-gray-200 p-3 rounded-md">
                         <span>{t('invoiceModal.total')}</span>
-                        <span>${totalAmount.toFixed(2)}</span>
+                        <span>৳{totalAmount.toFixed(2)}</span>
                     </div>
                 </div>
             </div>

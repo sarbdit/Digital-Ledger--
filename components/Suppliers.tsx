@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { useLedger } from '../contexts/LedgerContext';
 import { useLanguage } from '../contexts/LanguageContext';

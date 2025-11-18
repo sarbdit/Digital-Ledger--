@@ -46,7 +46,7 @@ const ContactList: React.FC<ContactListProps> = ({ contacts, onEdit, onDelete, c
                 </td>
                 <td className={`px-6 py-4 whitespace-nowrap text-right text-sm font-semibold ${contact.balance > 0 ? 'text-green-600' : contact.balance < 0 ? 'text-red-600' : 'text-gray-500'}`}>
                     {(contact.balance > 0 && contactType === 'supplier') || (contact.balance < 0 && contactType === 'customer') ? `${t('advance')} ` : ''}
-                    ${Math.abs(contact.balance).toFixed(2)}
+                    ৳{Math.abs(contact.balance).toFixed(2)}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <button 

@@ -84,28 +84,28 @@ const Dashboard: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <SummaryCard 
             title={t('dashboardPage.customersOweYou')} 
-            value={`$${stats.customersOwe.toFixed(2)}`} 
+            value={`৳${stats.customersOwe.toFixed(2)}`} 
             icon="fa-solid fa-arrow-down"
             color="text-green-500"
             bgColor="bg-green-100 dark:bg-green-900"
         />
         <SummaryCard 
             title={t('dashboardPage.youOweSuppliers')} 
-            value={`$${stats.youOwe.toFixed(2)}`} 
+            value={`৳${stats.youOwe.toFixed(2)}`} 
             icon="fa-solid fa-arrow-up"
             color="text-red-500"
             bgColor="bg-red-100 dark:bg-red-900"
         />
         <SummaryCard 
             title={t('dashboardPage.totalCredit')} 
-            value={`$${stats.totalCredit.toFixed(2)}`} 
+            value={`৳${stats.totalCredit.toFixed(2)}`} 
             icon="fa-solid fa-plus"
             color="text-blue-500"
             bgColor="bg-blue-100 dark:bg-blue-900"
         />
         <SummaryCard 
             title={t('dashboardPage.totalDebit')} 
-            value={`$${stats.totalDebit.toFixed(2)}`} 
+            value={`৳${stats.totalDebit.toFixed(2)}`} 
             icon="fa-solid fa-minus"
             color="text-yellow-500"
             bgColor="bg-yellow-100 dark:bg-yellow-900"
@@ -147,7 +147,7 @@ const Dashboard: React.FC = () => {
                           </div>
                           <div className="flex items-center gap-4 w-full sm:w-auto">
                               <span className={`text-lg font-bold ${contact.balance > 0 ? 'text-green-500' : 'text-red-500'}`}>
-                                  ${Math.abs(contact.balance).toFixed(2)}
+                                  ৳{Math.abs(contact.balance).toFixed(2)}
                               </span>
                               <button
                                   onClick={() => handleSendReminder(contact)}
@@ -174,7 +174,7 @@ const Dashboard: React.FC = () => {
                     <p className="text-sm text-gray-500 dark:text-gray-400">{new Date(t.date).toLocaleDateString()}</p>
                   </div>
                   <div className={`text-lg font-bold ${t.type === TransactionType.CREDIT ? 'text-green-500' : 'text-red-500'}`}>
-                    {t.type === TransactionType.CREDIT ? '+' : '-'} ${t.amount.toFixed(2)}
+                    {t.type === TransactionType.CREDIT ? '+' : '-'} ৳{t.amount.toFixed(2)}
                   </div>
                 </li>
               ))}

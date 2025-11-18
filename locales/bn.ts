@@ -44,8 +44,8 @@ export const bn = {
   dashboardPage: {
     customersOweYou: 'আমি পাব',
     youOweSuppliers: 'আমি দিব',
-    totalCredit: 'মোট বাকি',
-    totalDebit: 'মোট আদায়',
+    totalCredit: 'মোট জমা',
+    totalDebit: 'মোট বাকি',
     generateAISummary: 'AI সারাংশ তৈরি করুন',
     addCredit: 'জমা যোগ করুন',
     addDebit: 'বাকি যোগ করুন',
@@ -55,8 +55,8 @@ export const bn = {
     recentTransactions: 'সাম্প্রতিক লেনদেন',
     noRecentTransactions: 'কোনো সাম্প্রতিক লেনদেন নেই।',
     aiFinancialSummary: 'AI আর্থিক সারাংশ',
-    mockReminderSent: 'মক রিমাইন্ডার পাঠানো হয়েছে!\n\nপ্রতি: {{name}}\nপরিমাণ: ${{amount}}',
-    mockPaymentNotificationSent: 'মক পেমেন্ট বিজ্ঞপ্তি পাঠানো হয়েছে!\n\nপ্রতি: {{name}}\nপরিমাণ: ${{amount}}',
+    mockReminderSent: 'মক রিমাইন্ডার পাঠানো হয়েছে!\n\nপ্রতি: {{name}}\nপরিমাণ: ৳{{amount}}',
+    mockPaymentNotificationSent: 'মক পেমেন্ট বিজ্ঞপ্তি পাঠানো হয়েছে!\n\nপ্রতি: {{name}}\nপরিমাণ: ৳{{amount}}',
   },
 
   // Customers & Suppliers Pages
@@ -96,8 +96,8 @@ export const bn = {
     weekly: 'সাপ্তাহিক',
     monthly: 'মাসিক',
     noDataForTimeframe: 'নির্বাচিত সময়সীমার জন্য কোনো ডেটা উপলব্ধ নেই।',
-    creditIncome: 'বাকি',
-    debitExpense: 'আদায়',
+    creditIncome: 'আদায়',
+    debitExpense: 'বাকি',
   },
 
   // Login Page
@@ -164,6 +164,7 @@ export const bn = {
   // Invoice Modal
   invoiceModal: {
     title: 'ইনভয়েস #{{invoiceNumber}}',
+    invoiceTitle: 'ইনভয়েস',
     yourCompany: 'আপনার কোম্পানি',
     invoiceNumber: 'ইনভয়েস #:',
     billTo: 'বিল প্রতি',
